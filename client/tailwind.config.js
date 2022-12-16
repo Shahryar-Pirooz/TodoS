@@ -8,7 +8,11 @@ module.exports = {
             gray: '#393e46',
             black: '#222831',
         },
-        fontFamily: {},
+        fontFamily: {
+            body: ['Commissioner', 'sans-serif'],
+            subheader: ['PT Sans Caption', 'sans-serif'],
+            header: ["'Red Hat Display'", 'sans-serif'],
+        },
         extend: {},
     },
     plugins: [],
