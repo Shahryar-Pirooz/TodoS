@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: ['./src/**/*.{js,jsx,ts,tsx}'],
+    darkMode: 'class',
     theme: {
         colors: {
             light: '#eeeeee',
@@ -9,9 +10,7 @@ module.exports = {
             black: '#222831',
         },
         fontFamily: {
-            body: ['Commissioner', 'sans-serif'],
-            subheader: ['PT Sans Caption', 'sans-serif'],
-            header: ["'Red Hat Display'", 'sans-serif'],
+            'quick-sand': ['Quicksand', 'sans-serif'],
         },
         extend: {},
     },
