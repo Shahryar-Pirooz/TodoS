@@ -8,11 +8,3 @@ export const getAll = async (req, res) => {
         return res.status(500).json(error.message)
     }
 }
-
-// export const GetById = async (req , res) => {
-//     try {
-//         const taskId = req
-//     } catch (error) {
-
-//     }
-// }
