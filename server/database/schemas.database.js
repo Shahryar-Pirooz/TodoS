@@ -11,15 +11,10 @@ const taskSchema = new Schema({
         default: false,
         maxLength: 50,
     },
-    body: {
-        type: String,
-        maxLength: 150,
-    },
     done: {
         type: Boolean,
         default: false,
     },
-    subTask: [Schema.Types.ObjectId],
 })
 
 export const Task = model('Task', taskSchema)

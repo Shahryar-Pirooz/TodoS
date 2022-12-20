@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Main from './components/main'
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
-
+import Main from './components/main'
+import List from './components/taskList'
 class App extends Component {
     constructor(props) {
         super(props)
@@ -34,6 +34,7 @@ class App extends Component {
                     )}
                 </button>
                 <Main />
+                <List />
             </div>
         )
     }

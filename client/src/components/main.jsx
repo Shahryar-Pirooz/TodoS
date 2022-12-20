@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 export default function Main() {
     const [value, setValue] = useState('')
@@ -7,7 +8,10 @@ export default function Main() {
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(value)
+        axios
+            .post('http://127.0.0.1:3030/', { title: value })
+            .then((m) => console.log(m))
+            .catch((e) => console.log(e))
         setValue('')
     }
     return (
