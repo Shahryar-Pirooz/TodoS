@@ -1,9 +1,10 @@
 import { Schema, model } from 'mongoose'
 
+const currentDate = new Date()
 const taskSchema = new Schema({
     date: {
-        type: Date,
-        default: Date.now,
+        type: String,
+        default: `${currentDate.getMonth()} - ${currentDate.getDay()}`,
     },
     title: {
         type: String,

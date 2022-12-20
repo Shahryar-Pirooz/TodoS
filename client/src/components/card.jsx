@@ -1,7 +1,9 @@
 import React from 'react'
 import { PencilIcon, TrashIcon, CheckIcon } from '@heroicons/react/24/solid'
 
-function Card() {
+function Card(props) {
+    const { title, done, date } = props.data
+    console.log(props.data)
     const textStyle =
         'font-quick-sand transition-all duration-300 text-black dark:text-light'
     const iconStyle =
@@ -10,10 +12,10 @@ function Card() {
     return (
         <div className="h-8 columns-3 gap-5 text-center transition-all duration-300 bg-light dark:bg-gray">
             <div className="w-full">
-                <p className={textStyle}>1</p>
+                <p className={textStyle}>{date}</p>
             </div>
             <div className="w-full">
-                <h4 className={textStyle}>Test</h4>
+                <h4 className={textStyle}>{title}</h4>
             </div>
             <div className="w-full columns-3">
                 <PencilIcon className={iconStyle} />

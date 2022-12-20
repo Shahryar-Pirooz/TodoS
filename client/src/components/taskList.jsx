@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Card from './card'
 
 function List() {
+    const [tasks, getTasks] = useState()
+    useEffect(() => {
+        axios.get('http://127.0.0.1:3030').then((res) => {
+            getTasks(res.data)
+        })
+    }, [])
+
     return (
         <div className="grid justify-items-center mt-8">
             <ul className="w-full sm:w-1/2">
-                <li className="transition-all duration-300 hover:scale-x-110">
-                    <Card />
-                </li>
+                {tasks ? (
+                    tasks.map((task) => {
+                        return (
+                            <li
+                                key={task._id}
+                                className="transition-all duration-300 hover:scale-x-110"
+                            >
+                                <Card data={task} />
+                            </li>
+                        )
+                    })
+                ) : (
+                    <p>no task find</p>
+                )}
             </ul>
         </div>
     )

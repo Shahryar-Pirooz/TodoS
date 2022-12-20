@@ -13,6 +13,7 @@ export default function Main() {
             .then((m) => console.log(m))
             .catch((e) => console.log(e))
         setValue('')
+        window.location.reload()
     }
     return (
         <>
