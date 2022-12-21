@@ -5,7 +5,7 @@ import Card from './card'
 function List() {
     const [tasks, getTasks] = useState()
     useEffect(() => {
-        axios.get('http://127.0.0.1:3030').then((res) => {
+        axios.get(process.env.REACT_APP_SERVER_URL).then((res) => {
             getTasks(res.data)
         })
     }, [])

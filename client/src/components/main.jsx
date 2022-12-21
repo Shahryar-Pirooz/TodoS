@@ -9,7 +9,7 @@ export default function Main() {
     const handleSubmit = (e) => {
         e.preventDefault()
         axios
-            .post('http://127.0.0.1:3030/', { title: value })
+            .post(process.env.REACT_APP_SERVER_URL, { title: value })
             .then((m) => console.log(m))
             .catch((e) => console.log(e))
         setValue('')

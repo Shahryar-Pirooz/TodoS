@@ -5,7 +5,8 @@ export const addTask = (req, res) => {
         const { title } = req.body
         const newTask = new Task({ title })
         newTask.save()
+        return res.status(200).json(`${newTask} saved`)
     } catch (error) {
-        console.log(error.message)
+        return res.status(500).json(error.message)
     }
 }
