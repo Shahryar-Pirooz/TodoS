@@ -5,22 +5,38 @@ import { PencilIcon, TrashIcon, CheckIcon } from '@heroicons/react/24/solid'
 function Card(props) {
     const _serverURL = process.env.REACT_APP_SERVER_URL
     const { _id, title, done, date } = props.data
+    const cardStyle = done
+        ? 'h-8 columns-3 gap-5 text-center rounded-xl transition-all duration-300 bg-black dark:bg-black'
+        : 'h-8 columns-3 gap-5 text-center rounded-xl transition-all duration-300 bg-light dark:bg-gray'
     const textStyle = done
         ? 'font-quick-sand transition-all duration-300 line-through text-gray dark:text-gray'
         : 'font-quick-sand transition-all duration-300 text-black dark:text-light'
 
-    const iconStyle =
-        'w-full h-full mx-2 py-2 rounded-xl text-black  hover:bg-primary transition-all duration-300 hover:text-light hover:cursor-pointer dark:text-light dark:hover:text-gray'
-    const editTask = (id) => {}
-    const removeTask = (id) => {
+    const iconStyle = done
+        ? 'w-full h-full mx-2 py-2 rounded-xl transition-all duration-300 text-primary  hover:bg-primary hover:text-black hover:cursor-pointer'
+        : 'w-full h-full mx-2 py-2 rounded-xl transition-all duration-300 text-black  hover:bg-primary hover:text-light hover:cursor-pointer dark:text-light dark:hover:text-gray'
+
+    const editTask = (id, target) => {}
+    const removeTask = (id, target) => {
         axios
             .delete(_serverURL, { headers: { title }, data: { id: id } })
-            .then((m) => console.log(m))
+            .then((m) => {
+                window.location.reload()
+                return `${id} removed , ${m}`
+            })
             .catch((e) => console.log(e))
     }
-    const doneTask = (id) => {}
+    const doneTask = (id, target) => {
+        axios
+            .post(`${_serverURL}done`, { id })
+            .then((m) => {
+                window.location.reload()
+                return `${id} removed , ${m}`
+            })
+            .catch((e) => console.log(e))
+    }
     return (
-        <div className="h-8 columns-3 gap-5 text-center transition-all duration-300 bg-light dark:bg-gray">
+        <div className={cardStyle}>
             <div className="w-full">
                 <p className={textStyle}>{date}</p>
             </div>
@@ -30,15 +46,18 @@ function Card(props) {
             <div className="w-full columns-3">
                 <PencilIcon
                     className={iconStyle}
-                    onClick={() => editTask(_id)}
+                    id="edit"
+                    onClick={(e) => editTask(_id, e.target.id)}
                 />
                 <TrashIcon
                     className={iconStyle}
-                    onClick={() => removeTask(_id)}
+                    id="remove"
+                    onClick={(e) => removeTask(_id, e.target.id)}
                 />
                 <CheckIcon
                     className={iconStyle}
-                    onClick={() => doneTask(_id)}
+                    id="done"
+                    onClick={(e) => doneTask(_id, e.target.id)}
                 />
             </div>
         </div>

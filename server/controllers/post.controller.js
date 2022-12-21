@@ -10,3 +10,13 @@ export const addTask = (req, res) => {
         return res.status(500).json(error.message)
     }
 }
+
+export const doneTask = async (req, res) => {
+    const { id } = req.body
+    Task.findOne({ _id: id }).then((data) => {
+        const { _id, done, title } = data
+        Task.findOneAndUpdate({ _id }, { done: done ? false : true })
+            .then(() => res.status(200).json(`${title} done`))
+            .catch(() => res.status(500).json('something is wrong'))
+    })
+}
