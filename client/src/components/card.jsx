@@ -3,6 +3,7 @@ import axios from 'axios'
 import { PencilIcon, TrashIcon, CheckIcon } from '@heroicons/react/24/solid'
 
 function Card(props) {
+    const _serverURL = process.env.REACT_APP_SERVER_URL
     const { _id, title, done, date } = props.data
     const textStyle = done
         ? 'font-quick-sand transition-all duration-300 line-through text-gray dark:text-gray'
@@ -11,7 +12,12 @@ function Card(props) {
     const iconStyle =
         'w-full h-full mx-2 py-2 rounded-xl text-black  hover:bg-primary transition-all duration-300 hover:text-light hover:cursor-pointer dark:text-light dark:hover:text-gray'
     const editTask = (id) => {}
-    const removeTask = (id) => {}
+    const removeTask = (id) => {
+        axios
+            .delete(_serverURL, { headers: { title }, data: { id: id } })
+            .then((m) => console.log(m))
+            .catch((e) => console.log(e))
+    }
     const doneTask = (id) => {}
     return (
         <div className="h-8 columns-3 gap-5 text-center transition-all duration-300 bg-light dark:bg-gray">
