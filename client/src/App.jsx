@@ -22,16 +22,17 @@ class App extends Component {
 
     render() {
         const { isDark } = this.state
+        const darkModeStyle = 'h-6 w-6 text-primary'
         return (
             <div className="w-screen h-screen bg-light dark:bg-gray">
                 <button
-                    className="absolute bottom-4 right-4 p-5 rounded-xl transition-all bg-gray active:scale-95 dark:bg-light"
+                    className="absolute bottom-4 right-4 p-5 rounded-xl transition-all shadow-xl bg-light hover:shadow-primary active:scale-95 dark:bg-gray"
                     onClick={() => this.HandlerDark(isDark ? false : true)}
                 >
                     {isDark ? (
-                        <MoonIcon className="h-6 w-6 text-primary"></MoonIcon>
+                        <SunIcon className={darkModeStyle}></SunIcon>
                     ) : (
-                        <SunIcon className="h-6 w-6 text-primary"></SunIcon>
+                        <MoonIcon className={darkModeStyle}></MoonIcon>
                     )}
                 </button>
                 <Main />
