@@ -20,3 +20,10 @@ export const doneTask = async (req, res) => {
             .catch(() => res.status(500).json('something is wrong'))
     })
 }
+
+export const editTask = (req, res) => {
+    const { id, data } = req.body
+    Task.findOneAndUpdate({ _id: id }, { title: data })
+        .then((data) => res.status(200).json(`${data} saved`))
+        .catch((error) => res.status(500).josn(error.message))
+}
