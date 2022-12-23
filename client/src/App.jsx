@@ -7,17 +7,23 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isDark: false,
+            isDark: localStorage.getItem('isDark') ?? false,
         }
     }
 
     HandlerDark = (isDark) => {
         if (isDark) {
             document.documentElement.classList.add('dark')
+            localStorage.setItem('isDark', true)
         } else {
             document.documentElement.classList.remove('dark')
+            localStorage.setItem('isDark', false)
         }
         this.setState({ isDark })
+    }
+
+    componentDidMount() {
+        this.HandlerDark(this.state.isDark)
     }
 
     render() {
