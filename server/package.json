@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "eslint": "file:../../../Development/node-v18.12.1-linux-x64/lib/node_modules/eslint"
+    "eslint": "file:../../../Development/node-v18.12.1-linux-x64/lib/node_modules/eslint",
+    "jest": "^29.3.1"
   }
 }
