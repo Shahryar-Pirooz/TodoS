@@ -25,7 +25,9 @@ function List() {
                         )
                     })
                 ) : (
-                    <p>no task find</p>
+                    <p className="font-quick-sand text-black dark:text-light">
+                        no task find
+                    </p>
                 )}
             </ul>
         </div>
