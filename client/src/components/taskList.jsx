@@ -15,6 +15,7 @@ function List() {
             <ul className="w-full sm:w-1/2">
                 {tasks ? (
                     tasks.map((task) => {
+                        // console.log('hi')
                         return (
                             <li
                                 key={task._id}
@@ -26,7 +27,7 @@ function List() {
                     })
                 ) : (
                     <p className="font-quick-sand text-black dark:text-light">
-                        no task find
+                        No Task Found
                     </p>
                 )}
             </ul>
